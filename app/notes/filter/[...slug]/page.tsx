@@ -1,14 +1,14 @@
-import NotesClient from "../../Notes.client";
+import FilterNotesClient from "./Notes.client";
 
-interface FilterPageProps {
-  params: Promise<{
-    slug: string[];
-  }>;
+interface FilterNotesPageProps {
+  params: Promise<{ slug: string[] }>;
 }
 
-export default async function FilterPage({ params }: FilterPageProps) {
+export default async function FilterNotesPage({
+  params,
+}: FilterNotesPageProps) {
   const { slug } = await params;
   const tag = slug[0] === "all" ? undefined : slug[0];
 
-  return <NotesClient tag={tag} />;
+  return <FilterNotesClient tag={tag} />;
 }
